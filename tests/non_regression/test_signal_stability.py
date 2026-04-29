@@ -12,10 +12,10 @@ SEED = 42
 
 
 class TestSignalStability:
-    """Non-regression tests — pipeline output must remain stable across releases.
+    """Non-regression tests — pipeline output must remain stable.
 
     Any unintended change in processing logic will break these tests.
-    Reference generated with seed=42, stored in fixtures/reference_output.json.
+    Reference generated with seed=42, stored in fixtures/.
     """
 
     def test_pipeline_output_matches_reference(self) -> None:

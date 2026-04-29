@@ -45,11 +45,21 @@ class SignalGenerator:
         beat_times = np.arange(0.0, duration, beat_period)
 
         for bt in beat_times:
-            signal += 0.15 * np.exp(-((t - (bt + 0.10)) ** 2) / (2 * 0.010 ** 2))
-            signal += 1.00 * np.exp(-((t - (bt + 0.20)) ** 2) / (2 * 0.005 ** 2))
-            signal += 0.30 * np.exp(-((t - (bt + 0.35)) ** 2) / (2 * 0.020 ** 2))
+            signal += 0.15 * np.exp(
+                -((t - (bt + 0.10)) ** 2) / (2 * 0.010 ** 2)
+            )
+            signal += 1.00 * np.exp(
+                -((t - (bt + 0.20)) ** 2) / (2 * 0.005 ** 2)
+            )
+            signal += 0.30 * np.exp(
+                -((t - (bt + 0.35)) ** 2) / (2 * 0.020 ** 2)
+            )
 
-        noise = self._rng.normal(0.0, noise_level, n_samples).astype(np.float64)
+        noise = self._rng.normal(
+            0.0, noise_level, n_samples
+        ).astype(np.float64)
         samples = (signal + noise).astype(np.float64)
 
-        return ECGSignal(samples=samples, sample_rate=sample_rate, duration=duration)
+        return ECGSignal(
+            samples=samples, sample_rate=sample_rate, duration=duration
+        )

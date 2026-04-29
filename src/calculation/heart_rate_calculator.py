@@ -26,7 +26,8 @@ class HeartRateCalculator(IHeartRateCalculator):
             )
 
         rr_intervals = (
-            np.diff(processed.qrs_peaks).astype(np.float64) / processed.sample_rate
+            np.diff(processed.qrs_peaks).astype(np.float64)
+            / processed.sample_rate
         )
         bpm = float(60.0 / np.mean(rr_intervals))
 

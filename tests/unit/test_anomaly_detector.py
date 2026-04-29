@@ -14,7 +14,9 @@ class TestAnomalyDetector:
 
     def test_invalid_heart_rate_raises_value_error(self) -> None:
         """valid=False must raise ValueError containing 'invalid'."""
-        invalid = HeartRate(bpm=0.0, rr_intervals=np.array([], dtype=np.float64), valid=False)
+        invalid = HeartRate(
+            bpm=0.0, rr_intervals=np.array([], dtype=np.float64), valid=False
+        )
         with pytest.raises(ValueError, match="invalid"):
             self.detector.detect(invalid)
 
@@ -24,11 +26,13 @@ class TestAnomalyDetector:
 
     def test_detects_tachycardia(self, tachycardia_heart_rate) -> None:
         """120 BPM must be classified as TACHYCARDIA."""
-        assert self.detector.detect(tachycardia_heart_rate) == AnomalyType.TACHYCARDIA
+        result = self.detector.detect(tachycardia_heart_rate)
+        assert result == AnomalyType.TACHYCARDIA
 
     def test_detects_bradycardia(self, bradycardia_heart_rate) -> None:
         """45 BPM must be classified as BRADYCARDIA."""
-        assert self.detector.detect(bradycardia_heart_rate) == AnomalyType.BRADYCARDIA
+        result = self.detector.detect(bradycardia_heart_rate)
+        assert result == AnomalyType.BRADYCARDIA
 
     @pytest.mark.parametrize("bpm,expected", [
         (45.0,  AnomalyType.BRADYCARDIA),
@@ -40,7 +44,7 @@ class TestAnomalyDetector:
         (150.0, AnomalyType.TACHYCARDIA),
     ])
     def test_boundary_values(self, bpm: float, expected: AnomalyType) -> None:
-        """Clinical threshold boundary values must map to correct AnomalyType."""
+        """Boundary values must map to the correct AnomalyType."""
         hr = HeartRate(
             bpm=bpm,
             rr_intervals=np.array([60.0 / bpm], dtype=np.float64),
