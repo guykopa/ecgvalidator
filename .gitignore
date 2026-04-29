@@ -1,0 +1,63 @@
+# Docs internes (non publiées)
+CLAUDE.md
+Architecture.md
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Distribution / packaging
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+MANIFEST
+
+# Environnements virtuels
+.venv/
+venv/
+env/
+ENV/
+.env
+.env.*
+
+# pytest
+.pytest_cache/
+.cache/
+
+# Coverage (pytest-cov)
+.coverage
+.coverage.*
+coverage.xml
+coverage.json
+htmlcov/
+
+# Rapports générés (reports/ — CLAUDE.md)
+reports/
+
+# mypy
+.mypy_cache/
+
+# IDE / éditeurs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Sphinx build
+docs/_build/
