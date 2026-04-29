@@ -19,6 +19,7 @@ built with strict TDD and SOLID principles in a regulated medical environment
    :maxdepth: 2
    :caption: Contents
 
+   visualization
    architecture
    testing
    api/index
